@@ -30,8 +30,8 @@ const CategoryItem = ({ image, title, link }) => (
 
 const Category = () => {
   const categories = [
-    { image: Bus1, title: "Private Bus", link: "/bus/private" },
-    { image: Bus2, title: "Public Bus", link: "/bus/public" },
+    { image: Bus1, title: "Luxury Bus", link: "/bus/luxury" },
+    { image: Bus2, title: "City Shuttle", link: "/bus/cityshuttle" },
     { image: Bus3, title: "Tour Bus", link: "/bus/tour" },
   ]
 

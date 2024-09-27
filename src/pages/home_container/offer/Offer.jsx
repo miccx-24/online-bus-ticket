@@ -10,7 +10,7 @@ const Offer = () => {
     const handleCopy=() => {
         navigator.clipboard.writeText("GTECH08")
         .then(() => {
-            setCopied(false);
+            setCopied(true);
             setTimeout(() =>{
                 setCopied(true)
              },2000);
@@ -57,8 +57,10 @@ const Offer = () => {
             <p className="text-sm text-neutral-400 dark:text-neutral-600 font-normal">
                 Valid till: <span className="text-sm font-medium"> 13th November</span>
             </p>
+            
         </div>
         </div>
+      
       </div>
     </div>
   );
