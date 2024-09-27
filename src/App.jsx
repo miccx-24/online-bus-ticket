@@ -4,6 +4,9 @@ import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import HomeContainer from './pages/home_container/HomeContainer';
 import Bus from './pages/bus/Bus'; 
+import SeatSelection from './components/SeatSelection'
+import CheckoutReceipt from './components/CheckoutReceipt'
+
 
 function App() {
 
@@ -18,6 +21,11 @@ function App() {
           <Routes>
             <Route path ="/" element = {<HomeContainer/>} />
             <Route path ="/bus" element = {<Bus/>} />
+            <Route path="/select-seat/:id" element={<SeatSelection />} />
+            <Route path="/checkout" element={<CheckoutReceipt />} /> 
+            
+
+           
           </Routes>
 
           {/* Footer */}
