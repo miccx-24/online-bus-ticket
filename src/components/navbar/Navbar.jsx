@@ -29,7 +29,7 @@ const Navbar = () => {
         <div className='w-full h-[8ch] bg-neutral-100 dark:bg-neutral-900 flex items-center md:flex-row lg:px-28 md:px-16 sm:px-7 px-4 fixed top-0 z-50'>
             {/* Logo section */}
             <Link to={"/"} className='mr-16'>
-                <img src={Logo} alt="logo" className="w-28 h-auto object-contain" />
+                <img src={Logo} alt="logo" className="w-20 h-auto object-contain" />
             </Link>
 
             {/* Toggle button */}
