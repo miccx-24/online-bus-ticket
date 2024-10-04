@@ -6,26 +6,39 @@ import Bus2 from "../../../assets/bus.png"
 import Bus3 from "../../../assets/bus3.png"
 
 const CategoryItem = ({ image, title, link }) => (
-  <Link to={link} className='bg-neutral-200/60 dark:bg-neutral-900/40 block rounded-xl relative overflow-hidden h-64'>
-    <motion.div
-      className="w-full h-full p-4"
-      initial={{ x: 0 }}
-      whileHover={{ x: "-20%" }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-    >
-      <img src={image} alt={`${title} image`} className="w-full h-full object-contain" />
-    </motion.div>
-    <motion.div 
-      className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr dark:from-neutral-950/80 dark:to-neutral-950/60 from-neutral-400/80 to-neutral-400/60 flex items-center justify-center"
-      initial={{ opacity: 0 }}
-      whileHover={{ opacity: 1 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-    >
-      <h2 className="text-2xl font-bold text-center text-neutral-900 dark:text-neutral-50">
-        {title}
-      </h2>
-    </motion.div>
-  </Link>
+  <motion.div
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className='relative overflow-hidden rounded-2xl shadow-lg'
+  >
+    <Link to={link} className='block'>
+      <motion.div
+        className="relative h-80 bg-gradient-to-br from-violet-400 to-indigo-600 p-6"
+        initial={{ opacity: 0.8 }}
+        whileHover={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
+        <motion.img 
+          src={image} 
+          alt={`${title} image`} 
+          className="w-full h-full object-contain"
+          initial={{ y: 0 }}
+          whileHover={{ y: -10 }}
+          transition={{ duration: 0.3 }}
+        />
+      </motion.div>
+      <motion.div 
+        className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
+        <h2 className="text-3xl font-bold text-white text-center px-4">
+          {title}
+        </h2>
+      </motion.div>
+    </Link>
+  </motion.div>
 )
 
 const Category = () => {
@@ -37,19 +50,32 @@ const Category = () => {
 
   return (
     <section className='w-full lg:px-28 md:px-16 sm:px-7 px-4 mb-16'>
-      <div className="w-full flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-semibold text-neutral-800 dark:text-neutral-100">
-          Categories
+      <motion.div 
+        className="w-full flex items-center justify-between mb-12"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="text-4xl font-bold text-neutral-800 dark:text-neutral-100">
+          Explore Our <span className="text-violet-600">Categories</span>
         </h1>
-        <Link to="/bus" className='text-violet-600 hover:text-violet-700 dark:text-violet-400 dark:hover:text-violet-300 transition duration-300'>
-          View All
+        <Link 
+          to="/bus" 
+          className='text-violet-600 hover:text-violet-700 dark:text-violet-400 dark:hover:text-violet-300 transition duration-300 text-lg font-semibold'
+        >
+          View All →
         </Link>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      </motion.div>
+      <motion.div 
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
         {categories.map((category, index) => (
           <CategoryItem key={index} {...category} />
         ))}
-      </div>
+      </motion.div>
     </section>
   )
 }

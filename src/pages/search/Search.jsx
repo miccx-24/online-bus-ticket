@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import { FaMapMarkerAlt, FaCalendarAlt, FaClock, FaUsers } from 'react-icons/fa'
 
 const Search = () => {
   const navigate = useNavigate()
@@ -20,7 +22,6 @@ const Search = () => {
   }
 
   const handleCheckAvailability = () => {
-    // Validate form data
     if (!formData.from || !formData.to || !formData.date || !formData.time || !formData.seats) {
       alert('Please fill in all fields')
       return
@@ -36,26 +37,35 @@ const Search = () => {
       return
     }
 
-    // If all validations pass, navigate to the results page with the search parameters
     navigate('/search-results', { state: formData })
+  }
+
+  const inputVariants = {
+    focus: { scale: 1.02, boxShadow: "0px 0px 8px rgba(167, 139, 250, 0.5)" },
   }
 
   return (
     <div className='w-full lg:px-28 md:px-16 sm:px-7 px-4 my-[8ch]'>
-      <div className='w-full bg-neutral-100 rounded-md dark:bg-neutral-900/40 p-8'>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 items-end'>
-          <div className=''>
-            <label htmlFor="from" className='block mb-2 font-medium'>
-              From
-            </label>
+      <motion.div 
+        className='w-full bg-white dark:bg-neutral-800 rounded-lg shadow-lg overflow-hidden'
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className='bg-gradient-to-r from-violet-600 to-indigo-600 p-6 text-white'>
+          <h2 className='text-2xl font-bold'>Find Your Perfect Bus Trip</h2>
+          <p className='text-violet-200'>Enter your travel details below</p>
+        </div>
+        <div className='p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+          <motion.div className='relative' whileFocus="focus" variants={inputVariants}>
+            <FaMapMarkerAlt className='absolute top-1/2 left-3 transform -translate-y-1/2 text-violet-500' />
             <select 
               name="from" 
-              id="from" 
               value={formData.from}
               onChange={handleInputChange}
-              className='w-full appearance-none text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 inline-block bg-neutral-200/60 dark:bg-neutral-900/60 px-3 h-12 border border-neutral-200 dark:border-neutral-900 rounded-md focus:outline-none focus:bg-neutral-100 dark:focus:bg-neutral-700'
+              className='w-full pl-10 pr-3 py-3 bg-violet-50 dark:bg-neutral-700 border-2 border-violet-100 dark:border-neutral-600 rounded-lg focus:outline-none focus:border-violet-500 dark:focus:border-violet-400 transition-all duration-300'
             >
-              <option value="">Select Location</option>
+              <option value="">From</option>
               <option value="Harare">Harare</option>
               <option value="Bulawayo">Bulawayo</option>
               <option value="Hwange">Hwange</option>
@@ -63,19 +73,16 @@ const Search = () => {
               <option value="Harare,Zimbabwe">Harare,Zimbabwe</option>
               <option value="Cape Town,SA">Cape Town,SA</option>
             </select>
-          </div>
-          <div className=''>
-            <label htmlFor="to" className='block mb-2 font-medium'>
-              To
-            </label>
+          </motion.div>
+          <motion.div className='relative' whileFocus="focus" variants={inputVariants}>
+            <FaMapMarkerAlt className='absolute top-1/2 left-3 transform -translate-y-1/2 text-violet-500' />
             <select 
               name="to" 
-              id="to" 
               value={formData.to}
               onChange={handleInputChange}
-              className='w-full appearance-none text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 inline-block bg-neutral-200/60 dark:bg-neutral-900/60 px-3 h-12 border border-neutral-200 dark:border-neutral-900 rounded-md focus:outline-none focus:bg-neutral-100 dark:focus:bg-neutral-700'
+              className='w-full pl-10 pr-3 py-3 bg-violet-50 dark:bg-neutral-700 border-2 border-violet-100 dark:border-neutral-600 rounded-lg focus:outline-none focus:border-violet-500 dark:focus:border-violet-400 transition-all duration-300'
             >
-              <option value="">Select Location</option>
+              <option value="">To</option>
               <option value="Harare">Harare</option>
               <option value="Bulawayo">Bulawayo</option>
               <option value="Hwange">Hwange</option>
@@ -83,57 +90,48 @@ const Search = () => {
               <option value="Harare,Zimbabwe">Harare,Zimbabwe</option>
               <option value="Cape Town,SA">Cape Town,SA</option>
             </select>
-          </div>
-          <div>
-            <label htmlFor="date" className='block mb-2 font-medium'>
-              Choose Date 
-            </label>
+          </motion.div>
+          <motion.div className='relative' whileFocus="focus" variants={inputVariants}>
+            <FaCalendarAlt className='absolute top-1/2 left-3 transform -translate-y-1/2 text-violet-500' />
             <input 
               type="date" 
-              id='date' 
               name='date' 
               value={formData.date}
               onChange={handleInputChange}
-              className='w-full appearance-none text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 inline-block bg-neutral-200/60 dark:bg-neutral-900/60 px-3 h-12 border border-neutral-200 dark:border-neutral-900 rounded-md focus:outline-none focus:bg-neutral-100 dark:focus:bg-neutral-700' 
+              className='w-full pl-10 pr-3 py-3 bg-violet-50 dark:bg-neutral-700 border-2 border-violet-100 dark:border-neutral-600 rounded-lg focus:outline-none focus:border-violet-500 dark:focus:border-violet-400 transition-all duration-300'
             />
-          </div>
-          <div>
-            <label htmlFor="time" className='block mb-2 font-medium'>
-              Choose Time
-            </label>
+          </motion.div>
+          <motion.div className='relative' whileFocus="focus" variants={inputVariants}>
+            <FaClock className='absolute top-1/2 left-3 transform -translate-y-1/2 text-violet-500' />
             <input 
               type="time" 
-              id='time' 
               name='time' 
               value={formData.time}
               onChange={handleInputChange}
-              className='w-full appearance-none text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 inline-block bg-neutral-200/60 dark:bg-neutral-900/60 px-3 h-12 border border-neutral-200 dark:border-neutral-900 rounded-md focus:outline-none focus:bg-neutral-100 dark:focus:bg-neutral-700' 
+              className='w-full pl-10 pr-3 py-3 bg-violet-50 dark:bg-neutral-700 border-2 border-violet-100 dark:border-neutral-600 rounded-lg focus:outline-none focus:border-violet-500 dark:focus:border-violet-400 transition-all duration-300'
             />
-          </div>
-          <div>
-            <label htmlFor="seats" className='block mb-2 font-medium'>
-              Total Seats
-            </label>
+          </motion.div>
+          <motion.div className='relative' whileFocus="focus" variants={inputVariants}>
+            <FaUsers className='absolute top-1/2 left-3 transform -translate-y-1/2 text-violet-500' />
             <input 
               type="number" 
-              id="seats" 
               name="seats"
-              placeholder="Enter Seats" 
+              placeholder="Number of seats" 
               value={formData.seats}
               onChange={handleInputChange}
-              className="w-full appearance-none text-neutral-800 dark:text-neutral-100 placeholder:text-neutral-600 dark:placeholder:text-neutral-300 inline-block bg-neutral-200/60 dark:bg-neutral-900/60 px-3 h-12 border border-neutral-200 dark:border-neutral-900 rounded-md focus:outline-none focus:bg-neutral-100 dark:focus:bg-neutral-700"
+              className='w-full pl-10 pr-3 py-3 bg-violet-50 dark:bg-neutral-700 border-2 border-violet-100 dark:border-neutral-600 rounded-lg focus:outline-none focus:border-violet-500 dark:focus:border-violet-400 transition-all duration-300'
             />
-          </div>
-          <div className=''> 
-            <button 
-              className="w-full px-4 h-12 bg-violet-600 text-neutral-50 text-base font-normal rounded-md hover:bg-violet-700 transition-colors duration-300"
-              onClick={handleCheckAvailability}
-            >
-              Check Availability 
-            </button>
-          </div>
+          </motion.div>
+          <motion.button 
+            className="w-full px-6 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold rounded-lg hover:from-violet-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105"
+            onClick={handleCheckAvailability}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Check Availability 
+          </motion.button>
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }
